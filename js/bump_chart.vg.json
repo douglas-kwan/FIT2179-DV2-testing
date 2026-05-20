@@ -13,15 +13,15 @@
   "height": 300,
   "autosize": {"type": "fit", "contains": "padding"},
   "data": {"url": "data/fire_rank_by_season.csv"},
-  "params": [
-    {
-      "name": "state_hl",
-      "select": {"type": "point", "fields": ["state"]},
-      "bind": "legend"
-    }
-  ],
   "layer": [
     {
+      "params": [
+        {
+          "name": "state_hl",
+          "select": {"type": "point", "fields": ["state"]},
+          "bind": "legend"
+        }
+      ],
       "mark": {"type": "line", "strokeWidth": 3, "interpolate": "linear"},
       "encoding": {
         "x": {
@@ -68,7 +68,7 @@
       }
     },
     {
-      "mark": {"type": "circle", "size": 100, "opacity": 1},
+      "mark": {"type": "circle", "size": 100},
       "encoding": {
         "x": {"field": "season", "type": "ordinal"},
         "y": {
@@ -76,19 +76,15 @@
           "type": "quantitative",
           "scale": {"domain": [1, 8], "reverse": true}
         },
-        "color": {
-          "field": "state",
-          "type": "nominal",
-          "legend": null
-        },
+        "color": {"field": "state", "type": "nominal", "legend": null},
         "opacity": {
           "condition": {"param": "state_hl", "value": 1},
           "value": 0.08
         },
         "tooltip": [
-          {"field": "state", "title": "State"},
-          {"field": "season", "title": "Season"},
-          {"field": "rank", "title": "Rank"},
+          {"field": "state",    "title": "State"},
+          {"field": "season",   "title": "Season"},
+          {"field": "rank",     "title": "Rank"},
           {"field": "area_Mha", "title": "Area Burned (Mha)", "format": ".2f"}
         ]
       }
